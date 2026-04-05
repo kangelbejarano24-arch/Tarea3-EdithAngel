@@ -13,7 +13,7 @@ df = spark.read.format('csv').option('header','true').option('inferSchema', 'tru
 # Limpieza de datos
 print("Limpieza de datos")
 df = df.dropna()
-df = df.dropDuplicates()
+df = df.dropDuplicates() 
 
 # Transformación de datos
 print("Transformación de datos")
