@@ -1,4 +1,4 @@
-# Procesamiento en batch
+# Procesamiento en batch con Apache Spark
 
 ## Descripción
 
