@@ -1,62 +1,58 @@
-# Importación de librerías necesarias
-from pyspark.sql import SparkSession, functions as F
+# Procesamiento en Batch con Apache Spark
 
-# Creación de la sesión de Spark
-spark = SparkSession.builder.appName('Tarea').getOrCreate()
+# Descripción
 
-# Ruta del archivo almacenado en HDFS
-file_path = 'hdfs://localhost:9000/Tarea3EdithAngel/anem-hgsc.csv'
+Este proyecto realiza un análisis de datos en batch utilizando Apache Spark sobre un conjunto de datos de accidentes de tránsito en Colombia.
 
-# Lectura del archivo CVS y creación del DataFrame
-df = spark.read.format('csv').option('header','true').option('inferSchema', 'true').load(file_path)
+El dataset incluye información como:
+- Marca del vehículo
+- Tipo de vehículo
+- Edad del vehículo
+- Fecha del accidente
+- Gravedad del accidente
 
-# Limpieza de datos
-print("Limpieza de datos")
-df = df.dropna()
-df = df.dropDuplicates()
+El objetivo es identificar patrones y factores asociados a los accidentes.
 
-# Transformación de datos
-print("Transformación de datos")
-df = df.withColumn("anio_accidente", F.year(F.col("fecha_accidente")))
+## Tecnologías utilizadas
 
-# Exploración de datos
+- Apache Spark
+- Python (PySpark)
+- Hadoop HDFS
 
-# Visualizar la estructura del dataset
-print("Esquema")
-df.printSchema()
+## Procesamiento realizado
 
-# Mostrar algunos registros para conocer el contenido
-print("Primeros datos")
-df.show(5)
+### 1. Carga de datos
+Se carga el dataset desde HDFS utilizando Spark.
 
-# Obtener estadísticas generales del conjunto de datos
-print("Estadísticas")
-df.summary().show()
+### 2. Limpieza de datos
+- Eliminación de valores nulos
+- Eliminación de duplicados
 
-# Análisis de datos
+### 3. Transformación
+- Creación de la columna "año_accidente"
 
-# Vehículos con más de 10 años
-print("Vehículos con edad mayor a 10 años\n")
-vehiculos_antiguos = df.filter(F.col('edad_vehiculo') > 10).select('marca_vehiculo','tipo_vehiculo','edad_vehiculo')
-vehiculos_antiguos.show()
+### 4. Análisis exploratorio (EDA)
+- Vehículos con más de 10 años
+- Vehículos ordenados por edad
+- Cantidad de accidentes por tipo de vehículo
+- Cantidad de accidentes por gravedad
+- Marcas más involucradas
 
-# Vehículos ordenados por edad
-print("Vehículos ordenados de mayor a menor edad\n")
-sorted_df = df.sort(F.col("edad_vehiculo").desc()).select('marca_vehiculo','tipo_vehiculo','edad_vehiculo') 
-sorted_df.show()
+## Ejecución
 
-# Cantidad de accidentes por tipo de vehículo
-print("Cantidad de accidentes por tipo de vehículo\n")
-df.groupBy("tipo_vehiculo").count().orderBy("count", ascending=False).show()
+1. Asegurarse de tener Hadoop y Spark ejecutándose
+2. Cargar el dataset en HDFS:
+   hdfs dfs -put accidentes.csv /Tarea3EdithAngel
+3. Ejecutar el programa:
+   python3 tarea3_edith_angel.py
 
-# Cantidad de accidentes según la gravedad
-print("Cantidad de accidentes por gravedad\n")
-df.groupBy("gravedad_accidente").count().show()
+## Resultados
 
-# Marcas de vehículos más involucradas en accidentes
-print("Accidentes por marca de vehículo\n")
-df.groupBy("marca_vehiculo").count().orderBy("count", ascending=False).show(10)
+El análisis permitió identificar:
+- Las motocicletas como el tipo de vehículo con más accidentes
+- Mayor cantidad de accidentes con heridos
+- Marcas como Yamaha y Honda con alta participación
 
-# Finalización del programa
-input("Presione Enter para finalizar y cerrar Spark...")
-spark.stop()
+## Autor
+
+Edith Karina Angel Bejarano
