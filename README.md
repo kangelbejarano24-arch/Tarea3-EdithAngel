@@ -42,7 +42,7 @@ Se cargan los datos desde HDFS utilizando Spark DataFrames.
 
 ### 3. Transformación de datos
 
-* Creación de la columna `anio_accidente` a partir de la fecha
+* Creación de la columna `año_accidente` a partir de la fecha
 
 ### 4. Análisis exploratorio (EDA)
 
