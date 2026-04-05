@@ -12,7 +12,7 @@ Fuente: Datos Abiertos de Colombia
 
 Archivo: anem-hgsc.csv
 
-Variables principales:
+Incluye:
 - Marca del vehículo
 - Modelo del vehículo
 - Tipo de vehículo
