@@ -13,15 +13,11 @@ El dataset incluye:
 
 El objetivo es identificar patrones en los accidentes.
 
----
-
 ## Tecnologías utilizadas
 
 - Apache Spark
 - Python (PySpark)
 - Hadoop HDFS
-
----
 
 ## Procesamiento realizado
 
@@ -41,8 +37,6 @@ Se carga el dataset desde HDFS.
 - Cantidad por gravedad
 - Marcas más involucradas
 
----
-
 ## Ejecución
 
 1. Cargar dataset en HDFS:
@@ -51,16 +45,12 @@ hdfs dfs -put accidentes.csv /Tarea3EdithAngel
 2. Ejecutar:
 python3 tarea3_edith_angel.py
 
----
-
 ## Resultados
 
 - Las motocicletas presentan más accidentes
 - La mayoría son con heridos
 - Marcas como Yamaha y Honda son frecuentes
 
----
-
 ## Autor
 
-Edith Angel
+Edith Karina Angel Bejarano
