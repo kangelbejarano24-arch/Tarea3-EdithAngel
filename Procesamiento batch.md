@@ -16,7 +16,7 @@ Se eliminaron valores nulos y registros duplicados para garantizar la calidad de
 
 ### Transformación
 
-Se creó una nueva columna llamada `anio_accidente` para facilitar el análisis temporal.
+Se creó una nueva columna llamada `año_accidente` para facilitar el análisis temporal.
 
 ### Análisis exploratorio (EDA)
 
