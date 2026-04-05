@@ -1,9 +1,7 @@
 # Procesamiento en Batch con Apache Spark
 
 # Descripción
-
 Este proyecto realiza un análisis de datos en batch utilizando Apache Spark sobre un conjunto de datos de accidentes de tránsito en Colombia.
-
 El dataset incluye información como:
 - Marca del vehículo
 - Tipo de vehículo
